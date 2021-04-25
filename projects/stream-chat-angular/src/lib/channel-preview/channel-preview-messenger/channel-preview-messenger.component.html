@@ -1,0 +1,13 @@
+<button class="str-chat__channel-preview-messenger" (click)="onClick(channel)">
+  <div class='str-chat__channel-preview-messenger--left'>
+    <img [src]="displayImage" class='str-chat__channel-preview-messenger--avatar'/>
+  </div>
+  <div class='str-chat__channel-preview-messenger--right'>
+    <div class='str-chat__channel-preview-messenger--name'>
+      <span>{{displayTitle}}</span>
+    </div>
+    <div class='str-chat__channel-preview-messenger--last-message'>
+      {{displayLastMessage}}
+    </div>
+  </div>
+</button>

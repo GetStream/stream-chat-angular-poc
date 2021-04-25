@@ -1,0 +1,287 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "stream-chat-angular": {
+      "projectType": "library",
+      "root": "projects/stream-chat-angular",
+      "sourceRoot": "projects/stream-chat-angular/src",
+      "prefix": "",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/stream-chat-angular/tsconfig.lib.json",
+            "project": "projects/stream-chat-angular/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/stream-chat-angular/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/stream-chat-angular/src/test.ts",
+            "tsConfig": "projects/stream-chat-angular/tsconfig.spec.json",
+            "karmaConfig": "projects/stream-chat-angular/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/stream-chat-angular/**/*.ts",
+              "projects/stream-chat-angular/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "Messaging": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/messaging",
+      "sourceRoot": "projects/messaging/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/Messaging",
+            "index": "projects/messaging/src/index.html",
+            "main": "projects/messaging/src/main.ts",
+            "polyfills": "projects/messaging/src/polyfills.ts",
+            "tsConfig": "projects/messaging/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/messaging/src/favicon.ico",
+              "projects/messaging/src/assets"
+            ],
+            "styles": [
+              "projects/messaging/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "projects/stream-chat-angular/src/styles/index.scss"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/messaging/src/environments/environment.ts",
+                  "with": "projects/messaging/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "Messaging:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "Messaging:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "Messaging:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/messaging/src/test.ts",
+            "polyfills": "projects/messaging/src/polyfills.ts",
+            "tsConfig": "projects/messaging/tsconfig.spec.json",
+            "karmaConfig": "projects/messaging/karma.conf.js",
+            "assets": [
+              "projects/messaging/src/favicon.ico",
+              "projects/messaging/src/assets"
+            ],
+            "styles": [
+              "projects/messaging/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/messaging/**/*.ts",
+              "projects/messaging/**/*.html"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/messaging/e2e/protractor.conf.js",
+            "devServerTarget": "Messaging:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "Messaging:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "docs": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/docs",
+      "sourceRoot": "projects/docs/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/docs",
+            "index": "projects/docs/src/index.html",
+            "main": "projects/docs/src/main.ts",
+            "polyfills": "projects/docs/src/polyfills.ts",
+            "tsConfig": "projects/docs/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/docs/src/favicon.ico",
+              "projects/docs/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "projects/docs/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/docs/src/environments/environment.ts",
+                  "with": "projects/docs/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "docs:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "docs:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "docs:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/docs/src/test.ts",
+            "polyfills": "projects/docs/src/polyfills.ts",
+            "tsConfig": "projects/docs/tsconfig.spec.json",
+            "karmaConfig": "projects/docs/karma.conf.js",
+            "assets": [
+              "projects/docs/src/favicon.ico",
+              "projects/docs/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "projects/docs/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/docs/**/*.ts",
+              "projects/docs/**/*.html"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/docs/e2e/protractor.conf.js",
+            "devServerTarget": "docs:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "docs:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "stream-chat-angular",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
+}

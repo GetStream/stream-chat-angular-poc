@@ -1,0 +1,10 @@
+@import "../../variables.scss";
+
+.str-chat {
+  &__message-text {
+    background: #fff;
+    padding: 5px 10px;
+    border: 1px solid $border-color;
+    border-radius: $border-radius $border-radius $border-radius $border-radius;
+  }
+}

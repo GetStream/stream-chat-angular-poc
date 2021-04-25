@@ -1,0 +1,16 @@
+.str-chat {
+  &__message-list-container {
+    height: 90%;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+
+  &__message-list-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(222, 222, 222);
+    top: 0px;
+    left: 0px;
+  }
+}

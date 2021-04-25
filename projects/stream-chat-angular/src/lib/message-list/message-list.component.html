@@ -1,0 +1,23 @@
+<div class="str-chat__message-list-container" #messagelist (scroll)="handleScroll($event)" *ngIf="messages">
+  <div *ngFor="let message of messages; let i = index">
+    <ng-template
+      *ngIf="i > 0 && message.created_at.getTime() - messages[i - 1].created_at.getTime() > 10000"
+      customComponentHost
+      componentKey="date-separator"
+      [props]="{datetime: message.created_at}"
+    ></ng-template>
+    <ng-template
+      customComponentHost
+      componentKey="message-simple"
+      [props]="{
+        message: message,
+        alignment: getMessageAlignment(message),
+        groupPosition: getgroupPosition(i)
+      }"
+    ></ng-template>
+  </div>
+  <div
+    class="str-chat__message-list-overlay"
+    *ngIf="overlayActive">
+  </div>
+</div>

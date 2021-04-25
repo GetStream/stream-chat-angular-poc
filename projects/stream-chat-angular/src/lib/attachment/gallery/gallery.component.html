@@ -1,0 +1,7 @@
+<div class="str-chat__gallery str-chat__gallery--square">
+  <div
+    [ngClass]="{'str-chat__gallery-image': true, 'str-chat__gallery--square': images.length > 3}"
+    *ngFor="let image of images; index as i">
+    <img [src]="image.thumb_url || image.asset_url" />
+  </div>
+</div>

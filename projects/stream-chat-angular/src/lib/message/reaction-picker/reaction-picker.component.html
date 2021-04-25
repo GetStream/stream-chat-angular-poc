@@ -1,0 +1,16 @@
+<div class="str-chat__reaction-picker" @myInsertRemoveTrigger>
+  <reaction-picker-item
+    *ngFor="let reaction of supportedReactions"
+    class="str-chat__reaction-picker-item"
+    [reaction]="reaction"
+    >
+  </reaction-picker-item>
+  <div
+    class="str-chat__reaction-picker-bubble"
+    [ngClass]="{'reversed-tail':  reverseTailPosition}"
+  ></div>
+  <div
+    class="str-chat__reaction-picker-bubble-smaller"
+    [ngClass]="{'reversed-tail':  reverseTailPosition}"
+  ></div>
+</div>

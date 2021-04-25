@@ -1,0 +1,56 @@
+<div
+  class="str-chat__message"
+  [ngClass]="{'str-chat__message--me': alignment === 'right'}">
+  <div class="str-chat__message-left-content">
+    <ng-template
+      customComponentHost
+      componentKey="message-avatar"
+      [props]="{
+        message: message,
+        showImage:
+          groupPosition === 'bottom' ||
+          groupPosition === 'single'
+      }"
+    ></ng-template>
+  </div>
+  <div class="str-chat__message-middle-content">
+    <div class="str-chat__message-reaction-picker-container">
+      <ng-template
+        *ngIf="reactionPickerActive"
+        customComponentHost
+        componentKey="reaction-picker"
+        [props]="{
+          message: message,
+          reverseTailPosition: alignment === 'right'
+        }"
+      ></ng-template>
+    </div>
+      <ng-template
+        customComponentHost
+        componentKey="attachment"
+        [props]="{attachments: message.attachments}"
+      ></ng-template>
+      <ng-template
+        customComponentHost
+        componentKey="message-text"
+        [props]="messageUIProps"
+      ></ng-template>
+      <ng-template
+        *ngIf="groupPosition === 'bottom' || groupPosition === 'single'"
+        customComponentHost
+        componentKey="message-timestamp"
+        [props]="messageUIProps"
+      ></ng-template>
+  </div>
+  <div class="str-chat__message-right-content">
+    <ng-template
+      *ngIf="messageOptionsActive"
+      customComponentHost
+      componentKey="message-options"
+      [props]="messageUIProps"
+      [outputs]="{
+        onPressReactionPicker: toggleReactionPicker
+      }"
+    ></ng-template>
+  </div>
+</div>

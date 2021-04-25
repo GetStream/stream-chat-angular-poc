@@ -1,0 +1,50 @@
+@import "../../variables.scss";
+
+.str-chat {
+  &__reaction-picker {
+    background-color: rgb(237, 237, 237);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+
+    &-bubble {
+      border-style: solid;
+      border-width: 5px 5px 5px 5px;
+      border-radius: 50%;
+      border-color: rgb(237, 237, 237);
+      position: absolute;
+      bottom: -4px;
+      right: 9px;
+
+      &.reversed-tail {
+        left: 9px;
+        right: unset;
+      }
+    }
+
+    &-bubble-smaller {
+      border-style: solid;
+      border-width: 2.5px 2.5px 2.5px 2.5px;
+      border-radius: 50%;
+      border-color: rgb(237, 237, 237);
+      position: absolute;
+      bottom: -8px;
+      right: 7px;
+
+      &.reversed-tail {
+        left: 7px;
+        right: unset;
+      }
+   }
+  }
+  
+  &__reaction-picker-item {
+    margin: 5px;    
+    font-size: large;
+    cursor: pointer;
+  }
+}

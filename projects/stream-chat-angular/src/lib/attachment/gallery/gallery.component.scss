@@ -1,0 +1,34 @@
+.str-chat__gallery {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: 10px;
+
+  &-image {
+    /* flex: 1; x */
+    width: 163px;
+    height: 163px;
+    background: white;
+    margin-bottom: 1px;
+    margin-right: 1px;
+
+    &:hover {
+      cursor: -moz-zoom-in;
+      cursor: -webkit-zoom-in;
+      cursor: zoom-in;
+    }
+
+    img {
+      width: inherit;
+      height: inherit;
+      object-fit: cover;
+    }
+  }
+
+  &--square {}
+
+  &--square &-image:nth-child(even) {
+    margin-right: 0;
+  }
+}

@@ -1,0 +1,7 @@
+<div class="container">
+  <channel-preview
+    *ngFor="let channel of channels"
+    [channel]="channel"
+    (clicked)="selected.emit($event)">
+  </channel-preview>
+</div>

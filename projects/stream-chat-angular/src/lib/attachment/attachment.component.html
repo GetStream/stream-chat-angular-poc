@@ -1,0 +1,8 @@
+<div *ngFor="let attachment of fAttachments; index as i">
+  <ng-template
+    *ngIf="isGalleryAttachment(attachment)"
+    customComponentHost
+    componentKey="gallery"
+    [props]="{images: attachment.images}"
+  ></ng-template>
+</div>

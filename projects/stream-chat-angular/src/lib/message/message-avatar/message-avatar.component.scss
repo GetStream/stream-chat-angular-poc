@@ -1,0 +1,11 @@
+.str-chat{
+  &__avatar-image {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+  }
+  &__avatar-spacer {
+    width: 38px;
+    height: 38px;
+  }
+}

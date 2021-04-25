@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="input-container">
+    <input [(ngModel)]="text" [mentionConfig]="mentionConfig" >
+  </div>
+  <div class="button-container">
+    <button (click)="onSubmit($event)" [disabled]="text === ''" >Send Message</button>
+  </div>
+</div>
